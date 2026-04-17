@@ -32,28 +32,41 @@ const App = () => {
   // Set up global background music to play exactly once
   const bgAudio = new Audio(happyBirthdaySnd);
   
-  const startCelebration = () => {
-    setHasStarted(true);
+  useEffect(() => {
+    const handlePageLoad = () => {
+      setTimeout(() => setAnimateOut(true), 8400);
+      setTimeout(() => setLoading(false), 9000);
+      setTimeout(() => setShowContent(true), 8600);
+    };
+
+    if (document.readyState === "complete") {
+      handlePageLoad();
+    } else {
+      window.addEventListener("load", handlePageLoad);
+    }
+
+    // Set up global background music to play exactly once (no looping)
+    const bgAudio = new Audio(happyBirthdaySnd);
     
     // Attempt autoplay
     const playPromise = bgAudio.play();
     if (playPromise !== undefined) {
       playPromise.catch((e) => {
-        console.log("Autoplay blocked by browser. ", e);
+        console.log("Autoplay blocked by browser. Waiting for user interaction...");
+        // Wait for the very first click on the screen to play the music
+        const startAudioOnClick = () => {
+          bgAudio.play();
+          window.removeEventListener("click", startAudioOnClick);
+        };
+        window.addEventListener("click", startAudioOnClick);
       });
     }
 
     // Still tracking in window just in case
     window.mainBgMusic = bgAudio;
 
-    // Start the transition timers now that we have interacted
-    setTimeout(() => setAnimateOut(true), 8400);
-    setTimeout(() => setLoading(false), 9000);
-    setTimeout(() => setShowContent(true), 8600);
-  };
-
-  useEffect(() => {
     return () => {
+      window.removeEventListener("load", handlePageLoad);
       bgAudio.pause();
     };
   }, []);
@@ -61,7 +74,7 @@ const App = () => {
   return (
     <>
       {
-        loading && <OpeningAnimation animateOut={animateOut} hasStarted={hasStarted} onStart={startCelebration} />
+        loading && <OpeningAnimation animateOut={animateOut}/>
       }
       {
         showContent && <RouterProvider router={MyRoute} />
