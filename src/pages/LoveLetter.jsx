@@ -4,43 +4,43 @@ const LoveLetter = () => {
     const lettersData = [
         {
             id: 1,
-            name: "Rexon",
-            msg: "Wish you the happiest birthday",
+            name: "Nishanth",
+            msg: "Wishing you the happiest of birthdays! May this year bring you immense joy and success.",
         },
         {
             id: 2,
-            name: "Rexon",
-            msg: "One picture from you can change my whole day, my whole mood, my whole heartbeat.",
+            name: "",
+            msg: "Your positive energy is truly inspiring. It's a privilege to know and work with you.",
         },
         {
             id: 3,
-            name: "Rexon",
-            msg: "Even through screens and pixels, your laugh reaches me like sunlight through a window—warm, real, and impossible to forget.",
+            name: "",
+            msg: "Thank you for always being so supportive. You make every challenge easier to handle.",
         },
         {
             id: 4,
-            name: "Rexon",
-            msg: "Every notification from you feels like a heartbeat whispering, I’m here, and I love you.",
+            name: "",
+            msg: "I hope your special day is filled with laughter, great company, and everything that makes you smile.",
         },
         {
             id: 5,
-            name: "Rexon",
-            msg: "Our messages might travel through wires, but every word you send lands straight in my heart.",
+            name: "",
+            msg: "Here is to another year of achieving amazing things together. Keep shining bright!",
         },
         {
             id: 6,
-            name: "Rexon",
-            msg: "Ever since our we met, my heart knew where it wanted to stay— with you, in every soft moment, every smile, every quiet piece of forever.",
+            name: "",
+            msg: "You are a wonderful person to have around. Wishing you all the best today and always.",
         },
         {
             id: 7,
-            name: "Rexon",
-            msg: " but you turned it into a memory my heart refuses to forget. Since then, every moment with you has felt softer, brighter, and filled with a kind of peace only you bring.",
+            name: "",
+            msg: "May your birthday be the start of a year filled with good luck, good health, and much happiness.",
         },
         {
             id: 8,
-            name: "Rexon",
-            msg: "Since our first conversation, you’ve been the quiet spark that changed my world, turning ordinary days into moments that feel beautifully meant to be.",
+            name: "",
+            msg: "Have a brilliant birthday! Enjoy your special day to the fullest, you truly deserve it.",
         },
     ];
     const [openEnvelope, setOpenEnvelope] = useState(false);
@@ -50,6 +50,11 @@ const LoveLetter = () => {
     useEffect(() => {
         setLetters(lettersData);
     }, []);
+
+    const handleOpenClick = () => {
+        setOpenEnvelope(true);
+    };
+
     // Drag logic
     const handleMouseDown = (e) => {
         const isTouch = e.type === "touchstart";
@@ -106,28 +111,26 @@ const LoveLetter = () => {
         }
     };
 
-
     const handleCloseLetter = (id) => {
         setLetters((prev) => prev.filter((l) => l.id !== id));
     };
 
-
     return (
-        <main className='munna bg-[#8b0000] h-screen w-full overflow-hidden'>
+        <main className='munna bg-[#0f172a] h-screen w-full overflow-hidden'>
             <section className="munna cssletter z-10">
                 <div className={`envelope ${openEnvelope ? "active" : ""}`}>
                     <button
                         className="munna heart"
                         id="openEnvelope"
                         aria-label="Open Envelope"
-                        onClick={() => setOpenEnvelope(true)}
+                        onClick={handleOpenClick}
                     >
                         <span className="munna heart-text">Open</span>
                     </button>
                     <div className="munna envelope-flap text-black relative">
                         <div className='munna absolute left-1/2 top-[20%] -translate-x-1/2 flex items-center justify-center flex-col md:gap-y-2'>
-                            <span className='munna font-sriracha md:text-2xl text-lg'>Envelope Of Love</span>
-                            <span className='munna font-dancingScript md:text-3xl text-xl'>Dear Trisha</span>
+                            <span className='munna font-sriracha md:text-2xl text-lg'>Best Wishes</span>
+                            <span className='munna font-dancingScript md:text-3xl text-xl'>Dear Risha</span>
                         </div>
                     </div>
                     <div className="munna envelope-folds">
@@ -173,58 +176,30 @@ const LoveLetter = () => {
             <div className="munna heart-container absolute top-[20%] md:left-20 left-6">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                    className="munna heartBeating md:w-[150px] w-[110px] h-[200px]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="munna heartBeating md:w-[150px] w-[110px] h-[200px] text-yellow-400"
                 >
-                    <path
-                        d="M471.7 73.6c-54.5-46.4-136-38.3-186.4 15.8L256 120.6l-29.3-31.2C176.3 35.3 94.8 27.2 40.3 73.6-18 125.4-13.3 221 43 273.7l187.3 177.6a24 24 0 0032.4 0L469 273.7c56.3-52.8 61-148.3 2.7-200.1z"
-                        fill="#b10505"
-                    />
+                    <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
                 </svg>
             </div>
-            <div className="munna heart-container absolute bottom-[10%] md:right-20 right-6 rotate-180">
-                <svg
+            <div className="munna heart-container absolute bottom-[10%] md:right-20 right-6">
+                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                    className="munna heartBeating md:w-[150px] w-[110px] h-[200px]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="munna heartBeating md:w-[150px] w-[110px] h-[200px] text-blue-400"
                 >
-                    <path
-                        d="M471.7 73.6c-54.5-46.4-136-38.3-186.4 15.8L256 120.6l-29.3-31.2C176.3 35.3 94.8 27.2 40.3 73.6-18 125.4-13.3 221 43 273.7l187.3 177.6a24 24 0 0032.4 0L469 273.7c56.3-52.8 61-148.3 2.7-200.1z"
-                        fill="#b10505"
-                    />
+                    <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
                 </svg>
             </div>
-            {/* ------------------ Heart Falling  */}
+            {/* ------------------ Falling Elements  */}
             <div className="munna snowflakes z-0">
-                <div className="munna snowflake">
-                    <img src="https://i.pinimg.com/originals/96/c7/8b/96c78bc8ab873498b763798793d64f62.png" width="25" />
-                </div>
-                <div className="munna snowflake">
-                    <img src="https://i.pinimg.com/originals/96/c7/8b/96c78bc8ab873498b763798793d64f62.png" width="25" />  </div>
-                <div className="munna snowflake">
-                    <img src="https://i.pinimg.com/originals/96/c7/8b/96c78bc8ab873498b763798793d64f62.png" width="25" />
-                </div>
-                <div className="munna snowflake">
-                    <img src="https://i.pinimg.com/originals/96/c7/8b/96c78bc8ab873498b763798793d64f62.png" width="25" />
-                </div>
-                <div className="munna snowflake">
-                    <img src="https://i.pinimg.com/originals/96/c7/8b/96c78bc8ab873498b763798793d64f62.png" width="25" />
-                </div>
-                <div className="munna snowflake">
-                    <img src="https://i.pinimg.com/originals/96/c7/8b/96c78bc8ab873498b763798793d64f62.png" width="25" />
-                </div>
-                <div className="munna snowflake">
-                    <img src="https://i.pinimg.com/originals/96/c7/8b/96c78bc8ab873498b763798793d64f62.png" width="25" />
-                </div>
-                <div className="munna snowflake">
-                    <img src="https://i.pinimg.com/originals/96/c7/8b/96c78bc8ab873498b763798793d64f62.png" width="25" />
-                </div>
-                <div className="munna snowflake">
-                    <img src="https://i.pinimg.com/originals/96/c7/8b/96c78bc8ab873498b763798793d64f62.png" width="25" />
-                </div>
-                <div className="munna snowflake">
-                    <img src="https://i.pinimg.com/originals/96/c7/8b/96c78bc8ab873498b763798793d64f62.png" width="25" />
-                </div>
+                {[...Array(10)].map((_, i) => (
+                    <div className="munna snowflake" key={i}>
+                        <div className={`w-4 h-4 rounded-full ${i % 2 === 0 ? 'bg-yellow-400' : 'bg-blue-400'}`}></div>
+                    </div>
+                ))}
             </div>
         </main>
     )

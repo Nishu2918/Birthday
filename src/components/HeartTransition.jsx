@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'; // 👈 Import useRef
+import React, { useEffect, useState, useRef } from 'react';
 import '../HeartTransition.css';
 import { useLocation } from 'react-router';
 
@@ -17,28 +17,21 @@ const HeartTransition = ({ children }) => {
         }
 
         setLoading(true);
-        const minTime = new Promise(res => setTimeout(res, 7000));
-        const loadDone = new Promise(res => window.requestIdleCallback(res, { timeout: 2000 }));
+        const minTime = new Promise(res => setTimeout(res, 1500));
+        const loadDone = new Promise(res => window.requestIdleCallback(res, { timeout: 1500 }));
 
         Promise.all([minTime, loadDone]).then(() => setLoading(false));
     }, [location.pathname]);
 
-
     return (
         <>
             {loading && (
-                <div className="route-loader">
-                    <main className='bg-[#8b0000] HeartTransisitonOpen'>
-                        <svg className="heart-loader" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 90 90" version="1.1">
-                            <g className="heart-loader__group">
-                                <path className="heart-loader__square" strokeWidth="1" fill="none" d="M0,30 0,90 60,90 60,30z" />
-                                <path className="heart-loader__circle m--left" strokeWidth="1" fill="none" d="M60,60 a30,30 0 0,1 -60,0 a30,30 0 0,1 60,0" />
-                                <path className="heart-loader__circle m--right" strokeWidth="1" fill="none" d="M60,60 a30,30 0 0,1 -60,0 a30,30 0 0,1 60,0" />
-                                <path className="heart-loader__heartPath" strokeWidth="2" d="M60,30 a30,30 0 0,1 0,60 L0,90 0,30 a30,30 0 0,1 60,0" />
-                            </g>
-                        </svg>
-                    </main>
-
+                <div className="route-loader flex items-center justify-center bg-[#0f172a]">
+                    <div className="flex gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-400 animate-bounce"></div>
+                        <div className="w-5 h-5 rounded-full bg-yellow-400 animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-5 h-5 rounded-full bg-sky-400 animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    </div>
                 </div>
             )}
 

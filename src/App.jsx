@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import LoveLetter from './pages/LoveLetter'
 import Test from './pages/Test'
 import OpeningAnimation from './components/OpeningAnimation'
+import happyBirthdaySnd from './assets/HappyBirthday.mp3'
 
 const App = () => {
 
@@ -26,27 +27,41 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
   const [animateOut, setAnimateOut] = useState(false); // New state for animation
+  const [hasStarted, setHasStarted] = useState(false);
 
-  useEffect(() => {
-    const handlePageLoad = () => {
-      setTimeout(() => setAnimateOut(true), 8400);
-      setTimeout(() => setLoading(false), 9000);
-      setTimeout(() => setShowContent(true), 8600);
-    };
-
-    if (document.readyState === "complete") {
-      handlePageLoad();
-    } else {
-      window.addEventListener("load", handlePageLoad);
+  // Set up global background music to play exactly once
+  const bgAudio = new Audio(happyBirthdaySnd);
+  
+  const startCelebration = () => {
+    setHasStarted(true);
+    
+    // Attempt autoplay
+    const playPromise = bgAudio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((e) => {
+        console.log("Autoplay blocked by browser. ", e);
+      });
     }
 
-    return () => window.removeEventListener("load", handlePageLoad);
+    // Still tracking in window just in case
+    window.mainBgMusic = bgAudio;
+
+    // Start the transition timers now that we have interacted
+    setTimeout(() => setAnimateOut(true), 8400);
+    setTimeout(() => setLoading(false), 9000);
+    setTimeout(() => setShowContent(true), 8600);
+  };
+
+  useEffect(() => {
+    return () => {
+      bgAudio.pause();
+    };
   }, []);
 
   return (
     <>
       {
-        loading && <OpeningAnimation animateOut={animateOut}/>
+        loading && <OpeningAnimation animateOut={animateOut} hasStarted={hasStarted} onStart={startCelebration} />
       }
       {
         showContent && <RouterProvider router={MyRoute} />

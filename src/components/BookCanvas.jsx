@@ -29,7 +29,7 @@ const BookCanvas = ({ active, setActive }) => {
                 <div className="card1">
                     <div className="cover-text-wrapper">
                         <h4 className="username">
-                            Dear Trisha<span className="underline"></span>
+                            Dear Risha<span className="underline"></span>
                         </h4>
                         <h3 className="cover-title">
                             Happy Birthday!
@@ -68,12 +68,32 @@ const BookCanvas = ({ active, setActive }) => {
 
                         {/* Swapping back to H2 to match the original CSS targeting */}
                         <div className="card2-message-text italic">
-                            <article style={{ marginBottom: '8px' }}>Happy Birthday, Trisha ❤️</article>
-                            <article style={{ marginBottom: '10px' }}>From the moment we met, something in my life shifted—like the universe quietly guiding me toward someone meant for me.You brought warmth into the parts of me I didn’t even know were cold, And you expanded my days with a dimension I can only call my own.</article>
-                            <article style={{ marginBottom: '10px' }}>On your birthday, I just want you to know this: I want you with me in every chapter, every storm, every sunshine, every tomorrow. No matter what comes, I’ll be on your side—always. I’ll choose you, protect you, stand with you, and love you in ways that remind you you’re never alone.</article>
-                            <article style={{ marginBottom: '10px' }}>You’re not just another year older today… <br />
-                                you’re the reason my life feels softer, brighter, and endlessly worth living. Happy Birthday.</article>
-                        </div>
+    <article style={{ marginBottom: '8px' }}>
+        Happy Birthday, Risha ❤️
+    </article>
+
+    <article style={{ marginBottom: '10px' }}>
+        From the moment we started working together, 
+        something felt easy and natural—like conversations didn’t need effort 
+        and days felt a little lighter.
+    </article>
+
+    <article style={{ marginBottom: '10px' }}>
+        You bring a calm and positive energy wherever you go, 
+        and it genuinely makes things around you better. 
+        It’s been really nice getting to know you.
+    </article>
+
+    <article style={{ marginBottom: '10px' }}>
+        On your birthday, I just wish you more happiness, 
+        success, and moments that make you truly smile. 
+        May this year bring you everything you’re hoping for ✨
+    </article>
+
+    <article style={{ marginBottom: '10px' }}>
+        Have a wonderful day and an even better year ahead 😊
+    </article>
+</div>
 
                         <div className="card2-decoration"></div> {/* Decoration */}
 
@@ -91,7 +111,7 @@ const BookCanvas = ({ active, setActive }) => {
                         <div className="confetti-dots"></div>
 
                         <p className="signature">
-                            Your Best Friend, Rexon
+                            Your handsome brother, Nishanth 😂
                         </p>
                     </div>
                 </div>

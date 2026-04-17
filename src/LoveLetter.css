@@ -3,17 +3,17 @@
 :root {
     --envelope-x: 300px;
     --envelope-y: 200px;
-    --envelope-bg: Moccasin;
-    --envelope-shadow: Peru;
+    --envelope-bg: #0ea5e9;
+    --envelope-shadow: #0284c7;
     --letter-x: 250px;
     --letter-y: calc(250px - 1rem - 10px);
-    --letter-bg: AntiqueWhite;
-    --letter-shadow: BurlyWood;
-    --letter-text: #180d07;
+    --letter-bg: #f8fafc;
+    --letter-shadow: #cbd5e1;
+    --letter-text: #0f172a;
     --letter-font: "Sriracha", cursive;
-    --letter-button-text: darkred;
-    --heart-bg: #8b0000;
-    --heart-text: white;
+    --letter-button-text: #0ea5e9;
+    --heart-bg: #eab308;
+    --heart-text: #0f172a;
 }
 
 @media (min-width: 650px) {
@@ -185,7 +185,7 @@
 }
 
 .envelope::before {
-    content: "˚ʚ❤︎ɞ˚";
+    content: "✨";
     font-size: 5rem;
     color: white;
     position: absolute;
@@ -418,7 +418,7 @@
 }
 
 .closeLetter::before {
-    content: "˚ʚ❤︎ɞ˚";
+    content: "✨";
     font-size: 1.5rem !important;
     font-family: var(--letter-font);
     color: var(--letter-button-text);
@@ -443,7 +443,7 @@
 
 @media screen and (max-width: 658px) {
     .envelope::before {
-        content: "˚ʚ❤︎ɞ˚";
+        content: "✨";
         font-size: 50px;
         color: white;
         position: absolute;
